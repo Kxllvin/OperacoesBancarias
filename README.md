@@ -1,4 +1,4 @@
-# Sistema de Operações Bancárias
+# Sistema de Operações Bancárias ![Java](https://img.shields.io/badge/Java-ED8B00?logo=java&logoColor=white)
 
 
 ## 📌 Descrição
