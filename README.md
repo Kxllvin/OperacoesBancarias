@@ -26,4 +26,4 @@ Aplicação desenvolvida em Java com o objetivo de simular operações bancária
 ## ▶️ Como Executar
 1. Clone o repositório:
 ```bash
-git clone https://github.com/kxllvin/nome-do-repositorio.git
+git clone https://github.com/Kxllvin/OperacoesBancarias
