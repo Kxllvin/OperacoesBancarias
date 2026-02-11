@@ -1,4 +1,7 @@
+package com.operacoesbancarias.app;
+
 import com.operacoesbancarias.model.Conta;
+import com.operacoesbancarias.exception.SaldoInsuficienteException;
 import java.util.Scanner;
 
 public class SimulacaoBancaria {
@@ -21,6 +24,12 @@ public class SimulacaoBancaria {
           case 2:
             double saq = scanner.nextDouble();
 
+            try {
+                conta.sacar(saq);
+                System.out.println("Saldo Atual: " + conta.getSaldo());
+            } catch (SaldoInsuficienteException e) {
+                System.out.println(e.getMessage());
+            }
             break;
 
           case 3:

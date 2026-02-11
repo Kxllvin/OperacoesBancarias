@@ -1,3 +1,5 @@
+package com.operacoesbancarias;
+
 import java.util.Scanner;
 
 public class VerificadorNumeroConta {

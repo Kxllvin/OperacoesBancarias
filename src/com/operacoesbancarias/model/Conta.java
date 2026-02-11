@@ -1,5 +1,8 @@
 package com.operacoesbancarias.model;
 
+import com.operacoesbancarias.exception.SaldoInsuficienteException;
+
+
 public class Conta {
     private double saldo;
 
@@ -16,6 +19,11 @@ public class Conta {
     }
 
     public void sacar(double valor){
+        
+        if (valor > saldo) {
+            throw new SaldoInsuficienteException("Saldo insuficiente para saque.");
+        }
+        
         saldo -= valor;
     }
 
