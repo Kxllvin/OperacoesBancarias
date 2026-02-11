@@ -1,10 +1,12 @@
+import com.operacoesbancarias.model.Conta;
 import java.util.Scanner;
 
 public class SimulacaoBancaria {
 
     public static void main(String[] args) { 
-        double saldo = 0; 
+        Conta conta = new Conta(0);
         Scanner scanner = new Scanner(System.in);
+
         while (true) { 
         
         int opcao = scanner.nextInt();
@@ -12,21 +14,24 @@ public class SimulacaoBancaria {
         switch (opcao) {
           case 1:
             double depo = scanner.nextDouble();
-            saldo += depo;
-            System.out.println("Saldo Atual: " + saldo);
+            conta.depositar(depo);
+            System.out.println("Saldo Atual: " + conta.getSaldo());
               break;
+
           case 2:
             double saq = scanner.nextDouble();
-            if (saq > saldo){
+            if (saq > conta.getSaldo()){
               System.out.println("Saldo Insuficiente.");
             } else {
-              saldo -= saq;
-              System.out.println("Saldo Atual: " + saldo);
+              conta.sacar(saq);
+              System.out.println("Saldo Atual: " + conta.getSaldo());
             }
             break;
+
           case 3:
-            System.out.println("Saldo Atual: " + saldo);
+            System.out.println("Saldo Atual: " + conta.getSaldo());
             break;
+
             default:
               System.out.println("Programa Encerrado.");
               scanner.close();
@@ -36,7 +41,7 @@ public class SimulacaoBancaria {
             if (opcao != 1 && opcao != 2 && opcao != 3) {
                 break; // Encerra o loop se a opção não for 1, 2 ou 3
             }
-    }
+      }
   }  
 
 }
