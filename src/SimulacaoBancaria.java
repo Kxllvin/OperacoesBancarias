@@ -20,12 +20,7 @@ public class SimulacaoBancaria {
 
           case 2:
             double saq = scanner.nextDouble();
-            if (saq > conta.getSaldo()){
-              System.out.println("Saldo Insuficiente.");
-            } else {
-              conta.sacar(saq);
-              System.out.println("Saldo Atual: " + conta.getSaldo());
-            }
+
             break;
 
           case 3:
