@@ -1,37 +1,41 @@
 package com.operacoesbancarias.model;
 
 import com.operacoesbancarias.exception.SaldoInsuficienteException;
+import java.math.BigDecimal;
 
 public class Conta {
-    private double saldo;
 
-    public Conta(double saldoInicial) {
-        if (saldoInicial < 0) {
+    private BigDecimal saldo;
+
+    public Conta(BigDecimal saldoInicial) {
+        if (saldoInicial.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Saldo inicial não pode ser negativo.");
         }
         this.saldo = saldoInicial;
     }
 
-    public double getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void depositar(double valor){
+    public void depositar(BigDecimal valor){
         validarValor(valor);
-        saldo += valor;
+
+        saldo = saldo.add(valor);
     }
 
-    public void sacar(double valor){
+    public void sacar(BigDecimal valor){
         validarValor(valor);
-        if (valor > saldo) {
+
+        if (valor.compareTo(saldo) > 0) {
             throw new SaldoInsuficienteException("Saldo insuficiente para saque.");
         }
         
-        saldo -= valor;
+        saldo = saldo.subtract(valor);
     }
 
-    private void validarValor(double valor) {
-        if (valor <= 0) {
+    private void validarValor(BigDecimal valor) {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("O valor deve ser maior que zero.");
         }
     }

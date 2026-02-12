@@ -1,13 +1,14 @@
 package com.operacoesbancarias.app;
 
-import com.operacoesbancarias.model.Conta;
 import com.operacoesbancarias.exception.SaldoInsuficienteException;
+import com.operacoesbancarias.model.Conta;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class SimulacaoBancaria {
 
     public static void main(String[] args) { 
-        Conta conta = new Conta(0);
+        Conta conta = new Conta(BigDecimal.ZERO);
         Scanner scanner = new Scanner(System.in);
 
         while (true) { 
@@ -16,13 +17,13 @@ public class SimulacaoBancaria {
 
         switch (opcao) {
           case 1:
-            double depo = scanner.nextDouble();
+            BigDecimal depo = scanner.nextBigDecimal();
             conta.depositar(depo);
             System.out.println("Saldo Atual: " + conta.getSaldo());
               break;
 
           case 2:
-            double saq = scanner.nextDouble();
+            BigDecimal saq = scanner.nextBigDecimal();
 
             try {
                 conta.sacar(saq);
