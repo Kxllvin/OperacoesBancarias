@@ -2,6 +2,7 @@ package com.operacoesbancarias.app;
 
 import com.operacoesbancarias.exception.SaldoInsuficienteException;
 import com.operacoesbancarias.model.Conta;
+import com.operacoesbancarias.service.ContaService;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class SimulacaoBancaria {
 
     public static void main(String[] args) { 
         Conta conta = new Conta(BigDecimal.ZERO);
+        ContaService contaService = new ContaService(conta);
         Scanner scanner = new Scanner(System.in);
 
         while (true) { 
@@ -18,7 +20,7 @@ public class SimulacaoBancaria {
         switch (opcao) {
           case 1:
             BigDecimal depo = scanner.nextBigDecimal();
-            conta.depositar(depo);
+            contaService.depositar(depo);
             System.out.println("Saldo Atual: " + conta.getSaldo());
               break;
 
@@ -26,7 +28,7 @@ public class SimulacaoBancaria {
             BigDecimal saq = scanner.nextBigDecimal();
 
             try {
-                conta.sacar(saq);
+                contaService.sacar(saq);
                 System.out.println("Saldo Atual: " + conta.getSaldo());
             } catch (SaldoInsuficienteException e) {
                 System.out.println(e.getMessage());
